@@ -1,5 +1,5 @@
 # 2DLattice
-Program code used in the 2D lattice project
+Program code used in the design of 2D lattices with de novo building blocks
 
 ## Step 1. Rapid generation of connecting and non-clashing 2D lattices from protein building blocks
 ~/Rosetta/main/source/bin/flatland.static.linuxgccrelease \

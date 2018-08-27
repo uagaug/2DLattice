@@ -18,3 +18,44 @@ Program code used in the 2D lattice project
 -cell_upper [upper limit for the cell dimensions, takes a real number] \
 -single_chain_version [if the input model is monomerized, the code accomondates for this psudeo-symmetry. Boolean] \
 -cell_step [search step size for the lattice cell dimensions, takes a real number]\
+
+## Step 2. HBNet search at the interfaces of extracted adjacent building blocks
+~/Rosetta/main/source/bin/rosetta_scripts.static.linuxgccrelease \3
+-in:file:s [input pdb model] \
+-out::file::pdb_comments \
+-run:preserve_header \
+-use_input_sc \
+-out:prefix HBNet_ \
+-beta \
+-missing_density_to_jump true \
+-parser:protocol 2D_HBNet.xml \
+-database [path to Rosetta database] \
+-chemical:exclude_patches LowerDNA  UpperDNA Cterm_amidation VirtualBB ShoveBB VirtualDNAPhosphate VirtualNTerm CTermConnect sc_orbitals pro_hydroxylated_case1 pro_hydroxylated_case2 ser_phosphorylated thr_phosphorylated  tyr_phos
+phorylated tyr_sulfated lys_dimethylated lys_monomethylated  lys_trimethylated lys_acetylated glu_carboxylated cys_acetylated tyr_diiodinated N_acetylated C_methylamidated MethylatedProteinCterm \
+-in:file:fullatom \
+-multi_cool_annealer 10\
+-no_optH false\
+-optH_MCA true\
+-flip_HNQ
+
+## Step 3. Regenerate the complete 2D lattice and map newly designed interfaces to all symmetric copies
+~/Rosetta/main/source/bin/symm_seq_gen_2D.default.linuxgccrelease \
+-database [path to Rosetta database] \
+-s [input pdb model] \
+-cn [symmetry of the building block, 2]
+
+## Step 4. Symmetric design of the 2D lattice in the context of its symmetry
+~/Rosetta/main/source/bin/symm_seq_gen_2D.default.linuxgccrelease \
+-database [path to Rosetta database] \ 
+-in:file:silent [input Rosetta silent file containing the 2D lattice] \
+-parser:script_vars resfile=[input resfile to enfore newly designed interfaces stay intact] \
+-out::file::pdb_comments \
+-run:preserve_header \
+-multi_cool_annealer 10 \
+-use_input_sc \
+-symmetry_definition dummy \
+-out:prefix packed_ \
+-beta
+-missing_density_to_jump true  \
+-symmetry:detect_bonds false \
+-parser:protocol 2D_final_design.xml

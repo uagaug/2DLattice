@@ -20,7 +20,7 @@ Program code used in the 2D lattice project
 -cell_step [search step size for the lattice cell dimensions, takes a real number]\
 
 ## Step 2. HBNet search at the interfaces of extracted adjacent building blocks
-~/Rosetta/main/source/bin/rosetta_scripts.static.linuxgccrelease \3
+~/Rosetta/main/source/bin/rosetta_scripts.static.linuxgccrelease \
 -in:file:s [input pdb model] \
 -out::file::pdb_comments \
 -run:preserve_header \

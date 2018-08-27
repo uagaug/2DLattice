@@ -2,7 +2,7 @@
 Program code used in the 2D lattice project
 
 ## Step 1. Rapid generation of connecting and non-clashing 2D lattices from protein building blocks
-~/Rosetta/main/source/bin/flatland.static.linuxgccrelease
+~/Rosetta/main/source/bin/flatland.static.linuxgccrelease \
 -in:file:s [input pdb model] \
 -database [path to Rosetta database] \
 -ignore_unrecognized_res \

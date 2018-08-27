@@ -17,7 +17,7 @@ Program code used in the design of 2D lattices with de novo building blocks
  -C211_B [lattice parameter B for the C 1 2 layer group, takes a real number] \
 -cell_upper [upper limit for the cell dimensions, takes a real number] \
 -single_chain_version [if the input model is monomerized, the code accomondates for this psudeo-symmetry. Boolean] \
--cell_step [search step size for the lattice cell dimensions, takes a real number]\
+-cell_step [search step size for the lattice cell dimensions, takes a real number]
 
 ## Step 2. HBNet search at the interfaces of extracted adjacent building blocks
 ~/Rosetta/main/source/bin/rosetta_scripts.static.linuxgccrelease \

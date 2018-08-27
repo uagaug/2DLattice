@@ -121,8 +121,8 @@
     <Add filter="ss_sc"/>
     <Add filter="atomcount_ILV"/>
     <Add filter="atomcount_norm_aro_apolar"/>
-    Add filter=uhb/>
-    Add filter=uhb2/>
-    Add filter=prepro/>
+    <Add filter=uhb/>
+    <Add filter=uhb2/>
+    <Add filter=prepro/>
   </PROTOCOLS>
 </ROSETTASCRIPTS>
